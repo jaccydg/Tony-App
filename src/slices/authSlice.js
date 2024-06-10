@@ -4,6 +4,7 @@ import api from '../api/Api';
 import { getAuthToken, setAuthToken } from '../helpers/AuthHelper';
 // eslint-disable-next-line import/no-cycle
 import { resetAppState } from './resetSlice';
+import { loadStationMarkers } from './homeSlice';
 
 const initialState = {
     fulfilled: false,
@@ -61,6 +62,7 @@ export const fetchInitData = () => async (dispatch) => {
     try {
         await Promise.all([
             dispatch(fetchUserData()),
+            dispatch(loadStationMarkers()),
         ]);
         dispatch(setInitDataFullfilled());
     } catch { /* empty */ }

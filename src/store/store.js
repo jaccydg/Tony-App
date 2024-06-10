@@ -6,6 +6,7 @@ import loaderReducer from '../slices/loaderSlice';
 import navigationReducer from '../slices/navigationSlice';
 import runtimeConfigReducer from '../slices/runtimeConfigSlice';
 import themeReducer from '../slices/themeSlice';
+import homeReducer from '../slices/homeSlice';
 
 const store = configureStore({
     reducer: {
@@ -16,6 +17,7 @@ const store = configureStore({
         navigation: navigationReducer,
         runtimeConfig: runtimeConfigReducer,
         theme: themeReducer,
+        home: homeReducer,
     },
 });
 export default store;
