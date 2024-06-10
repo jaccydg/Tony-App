@@ -1,4 +1,4 @@
-const navBarHeight = 60;
+const navBarHeight = 80;
 const other = 80;
 
 export {

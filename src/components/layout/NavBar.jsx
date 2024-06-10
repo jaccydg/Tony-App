@@ -9,6 +9,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import routes from '../../routes/Routes';
 import { toPage } from '../../actions/navigation';
 import ButtonLightDarkTheme from './ButtonLightDarkTheme';
+import { navBarHeight } from '../../helpers/Layout';
 
 export default function NavBar() {
     const location = useLocation();
@@ -47,14 +48,15 @@ export default function NavBar() {
                 sx={{
                     position: 'fixed',
                     width: '100vw',
+                    height: navBarHeight,
                     bottom: 0,
                 }}
                 value={pageValue}
                 onChange={handleTabChange}
             >
-                <BottomNavigationAction value={routes.home} icon={<HomeRoundedIcon />} />
-                <BottomNavigationAction value={routes.balance} icon={<WalletIcon />} />
-                <BottomNavigationAction value={routes.profile} icon={<PersonIcon />} />
+                <BottomNavigationAction value={routes.home} icon={<HomeRoundedIcon sx={{ fontSize: 45 }} />} />
+                <BottomNavigationAction value={routes.balance} icon={<WalletIcon sx={{ fontSize: 45 }} />} />
+                <BottomNavigationAction value={routes.profile} icon={<PersonIcon sx={{ fontSize: 45 }} />} />
             </BottomNavigation>
         </div>
     );
