@@ -9,7 +9,7 @@ export const themeModes = {
 };
 
 const initialState = {
-    themeMode: themeModes.light,
+    themeMode: themeModes.dark,
 };
 
 export const themeSlice = createSlice({

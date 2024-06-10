@@ -4,7 +4,7 @@ import SignupForm from '../components/auth/SignupForm';
 export default function SignupPage() {
     return (
         <Box
-            height='100vh'
+            height={window.innerHeight}
             width='100vw'
             display='flex'
             justifyContent='center'

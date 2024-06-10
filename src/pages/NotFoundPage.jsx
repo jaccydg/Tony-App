@@ -9,7 +9,7 @@ export default function NotFoundPage() {
                 flexDirection: 'column',
                 alignItems: 'center',
                 justifyContent: 'center',
-                height: '90vh',
+                height: window.innerHeight * 0.9,
             }}
         >
             <Typography

@@ -9,3 +9,4 @@ export const toSignupPage = () => store.dispatch(setNavigate(routes.signup));
 
 export const onHomePage = () => window.location.pathname === routes.home;
 export const onLoginPage = () => window.location.pathname === routes.login;
+export const onSignupPage = () => window.location.pathname === routes.signup;

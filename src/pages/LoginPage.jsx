@@ -4,7 +4,7 @@ import LoginForm from '../components/auth/LoginForm';
 export default function LoginPage() {
     return (
         <Box
-            height='100vh'
+            height={window.innerHeight}
             width='100vw'
             display='flex'
             justifyContent='center'

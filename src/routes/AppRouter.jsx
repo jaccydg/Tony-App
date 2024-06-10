@@ -9,6 +9,8 @@ import redirectIfAuth from '../components/routing/RedirectIfAuth';
 import requireAuth from '../components/routing/RequireAuth';
 import CircularBackdrop from '../components/backdrop/CircularBackdrop';
 import SignupPage from '../pages/SignupPage';
+import BalancePage from '../pages/BalancePage';
+import ProfilePage from '../pages/ProfilePage';
 
 const HomePage = lazy(() => import('../pages/HomePage'));
 
@@ -22,6 +24,8 @@ export default function AppRouter() {
                     <Route path={routes.signup} element={redirectIfAuth(<SignupPage />)} />
                     <Route path={routes.home} element={<PageLayout />}>
                         <Route index element={requireAuth(<HomePage />)} />
+                        <Route path={routes.balance} element={requireAuth(<BalancePage />)} />
+                        <Route path={routes.profile} element={requireAuth(<ProfilePage />)} />
                     </Route>
                     <Route path='*' element={<NotFoundPage />} />
                 </Routes>
