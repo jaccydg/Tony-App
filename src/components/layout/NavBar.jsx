@@ -13,7 +13,8 @@ import ButtonLightDarkTheme from './ButtonLightDarkTheme';
 export default function NavBar() {
     const location = useLocation();
     const pageValue = location.pathname === routes.home
-        || location.pathname === routes.login
+        || location.pathname === routes.balance
+        || location.pathname === routes.profile
         ? location.pathname : false;
 
     const handleTabChange = (event, newValue) => {
