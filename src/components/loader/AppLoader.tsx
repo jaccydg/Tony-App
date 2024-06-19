@@ -1,8 +1,11 @@
+/* eslint-disable import/no-unresolved */
 import { useTheme } from '@emotion/react';
 import { Box } from '@mui/material';
 import { useSelector } from 'react-redux';
-import logo from '../../resources/logo.svg';
+// @ts-ignore
+import Logo from '../../resources/logo.svg?react';
 import { State } from '../../store/store.ts';
+import { themeModes } from '../../slices/themeSlice.ts';
 
 export default function AppLoader() {
     const loaderEnabled = useSelector((state: State) => state.loader.loaderEnabled);
@@ -40,7 +43,7 @@ export default function AppLoader() {
                         },
                     }}
                 >
-                    <img src={logo} alt='TONY' />
+                    <Logo fill={theme.palette.mode === themeModes.light ? 'black' : 'white'} />
                 </Box>
             </Box>
         );

@@ -1,7 +1,9 @@
+/* eslint-disable import/no-unresolved */
 import { Box, useMediaQuery } from '@mui/material';
 import { useTheme } from '@emotion/react';
+import { themeModes } from '../../slices/themeSlice.ts';
 // @ts-ignore
-import logo from '../../resources/logo.svg';
+import Logo from '../../resources/logo.svg?react';
 
 export default function FormLogo() {
     const theme: any = useTheme();
@@ -17,7 +19,7 @@ export default function FormLogo() {
             top={75}
         >
             <Box width={desktop ? 350 : '70%'}>
-                <img src={logo} alt='TONY' />
+                <Logo fill={theme.palette.mode === themeModes.light ? 'black' : 'white'} />
             </Box>
         </Box>
     );
