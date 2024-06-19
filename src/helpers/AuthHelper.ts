@@ -10,7 +10,9 @@ const setAuthToken = (value: string) => {
 
 const getAuthToken = () => Cookies.get(authCookieName);
 
-const deleteAuthToken = () => Cookies.remove(authCookieName);
+const deleteAuthToken = () => {
+    Cookies.remove(authCookieName);
+};
 
 export {
     setAuthToken,

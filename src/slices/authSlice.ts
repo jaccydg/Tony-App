@@ -85,11 +85,11 @@ export const login = (data: Tony.Auth.LoginData) => async (dispatch: Dispatch) =
     setTimeout(() => dispatch(setCookieCheckEnabled()), 300);
 };
 
-export const logout = () => async () => {
+export const logout = () => async (dispatch: Dispatch) => {
     try {
         await api.logout();
     } catch { /* empty */ }
-    resetAppState();
+    dispatch(resetAppState() as any);
 };
 
 export default authSlice.reducer;
