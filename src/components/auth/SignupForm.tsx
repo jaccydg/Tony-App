@@ -3,13 +3,15 @@ import {
     useMediaQuery, useTheme,
 } from '@mui/material';
 import { useState } from 'react';
-import { dispatchLogin } from '../../actions/auth.ts';
+import { useDispatch } from 'react-redux';
 import { toLoginPage } from '../../actions/navigation.ts';
 import TextInput from './TextInput.tsx';
 import PasswordInput from './PasswordInput.tsx';
 import FormLogo from './FormLogo.tsx';
+import { login } from '../../slices/authSlice.ts';
 
 export default function LoginForm() {
+    const dispatch = useDispatch();
     const theme = useTheme();
     const desktop = useMediaQuery(theme.breakpoints.up('sm'));
 
@@ -28,7 +30,7 @@ export default function LoginForm() {
         setPasswordError(!password || password !== confirm);
         setConfirmError(!confirm || password !== confirm);
         if (username && email && password && confirm) {
-            dispatchLogin({ username, password });
+            dispatch(login({ username, password }) as any);
         }
     };
     const handleChangeUsername = (event: any) => setUsername(event.target.value);

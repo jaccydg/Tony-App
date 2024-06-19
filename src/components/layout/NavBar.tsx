@@ -3,6 +3,7 @@ import {
     Box, Button,
 } from '@mui/material';
 import { useLocation } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 import WalletIcon from '@mui/icons-material/Wallet';
 import PersonIcon from '@mui/icons-material/Person';
@@ -10,9 +11,10 @@ import routes from '../../routes/Routes.ts';
 import { toPage } from '../../actions/navigation.ts';
 import ButtonLightDarkTheme from './ButtonLightDarkTheme.tsx';
 import { navBarHeight } from '../../helpers/Layout.ts';
-import { dispatchLogout } from '../../actions/auth.ts';
+import { logout } from '../../slices/authSlice.ts';
 
 export default function NavBar() {
+    const dispatch = useDispatch();
     const location = useLocation();
     const pageValue = location.pathname === routes.home
         || location.pathname === routes.balance
@@ -24,7 +26,7 @@ export default function NavBar() {
     };
 
     const handleClickLogout = () => {
-        dispatchLogout();
+        dispatch(logout() as any);
     };
 
     return (

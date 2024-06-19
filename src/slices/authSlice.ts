@@ -5,6 +5,7 @@ import { getAuthToken, setAuthToken } from '../helpers/AuthHelper.ts';
 // eslint-disable-next-line import/no-cycle
 import { resetAppState } from './resetSlice.ts';
 import { loadStationMarkers } from './homeSlice.ts';
+import { setBackdrop, unsetBackdrop } from './backdropSlice.ts';
 
 const initialState = {
     fulfilled: false,
@@ -69,6 +70,7 @@ export const fetchInitData = () => async (dispatch: Dispatch) => {
 };
 
 export const authCookieCheck = () => async (dispatch: Dispatch) => {
+    dispatch(setBackdrop());
     dispatch(unsetCookieCheckEnabled());
     const authToken = getAuthToken();
     if (authToken) {
@@ -77,19 +79,24 @@ export const authCookieCheck = () => async (dispatch: Dispatch) => {
     } else {
         dispatch(unsetIsUserAuthenticated());
     }
+    dispatch(unsetBackdrop());
 };
 
 export const login = (data: Tony.Auth.LoginData) => async (dispatch: Dispatch) => {
+    dispatch(setBackdrop());
     const token = await api.login(data);
     setAuthToken(token);
     setTimeout(() => dispatch(setCookieCheckEnabled()), 300);
+    dispatch(unsetBackdrop());
 };
 
 export const logout = () => async (dispatch: Dispatch) => {
+    dispatch(setBackdrop());
     try {
         await api.logout();
     } catch { /* empty */ }
     dispatch(resetAppState() as any);
+    dispatch(unsetBackdrop());
 };
 
 export default authSlice.reducer;

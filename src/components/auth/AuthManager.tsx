@@ -1,20 +1,22 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { dispatchAuthCookieCheck } from '../../actions/auth.ts';
-import dispatchInitialLoading from '../../actions/loader.ts';
 import { State } from '../../store/store.ts';
+import { initialLoading } from '../../slices/loaderSlice.ts';
+import { authCookieCheck } from '../../slices/authSlice.ts';
 
 export default function AuthManager(props: { children: JSX.Element }) {
+    const dispatch = useDispatch();
     const { children } = props;
     const authState = useSelector((state: State) => state.auth);
 
     useEffect(() => {
-        dispatchInitialLoading();
+        dispatch(initialLoading() as any);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     useEffect(() => {
         if (authState.cookieCheckEnabled) {
-            dispatchAuthCookieCheck();
+            dispatch(authCookieCheck() as any);
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [authState.cookieCheckEnabled]);

@@ -3,6 +3,7 @@ import { Dispatch, createSlice } from '@reduxjs/toolkit';
 import api from '../api/Api.ts';
 import { setRuntimeConfig } from '../helpers/AppRuntimeConfig.ts';
 import { setErrorPage } from './errorSlice.ts';
+import { setBackdrop, unsetBackdrop } from './backdropSlice.ts';
 
 const initialState = {
     fulfilled: false,
@@ -27,6 +28,7 @@ export const runtimeConfigSlice = createSlice({
 export const { setSuccess, setError } = runtimeConfigSlice.actions;
 
 export const fetchAppRuntimeConfig = () => async (dispatch: Dispatch) => {
+    dispatch(setBackdrop());
     try {
         const config = await api.getRuntimeConfigJsonFile();
         setRuntimeConfig(config);
@@ -38,6 +40,7 @@ export const fetchAppRuntimeConfig = () => async (dispatch: Dispatch) => {
             message: err.message,
         }));
     }
+    dispatch(unsetBackdrop());
 };
 
 export default runtimeConfigSlice.reducer;
