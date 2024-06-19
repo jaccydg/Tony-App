@@ -1,9 +1,22 @@
 import axios from 'axios';
+import { getRuntimeConfig } from '../helpers/AppRuntimeConfig.ts';
 
 axios.interceptors.response.use(
     (response) => response,
     (error) => Promise.reject(error),
 );
+
+const createRequestBackend = (params: { url: string, method: string, data: {} } | { url: string, method: string }) => {
+    const requestParams = {
+        ...params,
+        baseURL: getRuntimeConfig().BACKEND_URL,
+        headers: {
+            accept: 'application/json',
+        },
+        withCredentials: true,
+    };
+    return requestParams;
+};
 
 const getRuntimeConfigJsonFile = async () => {
     const params = {
@@ -18,19 +31,47 @@ const getRuntimeConfigJsonFile = async () => {
 };
 
 async function login(data: Tony.Auth.LoginData): Promise<string> {
+    // const params = createRequestBackend({
+    //     url: 'login',
+    //     method: 'POST',
+    //     data: {
+    //         username: data.username,
+    //         password: data.password,
+    //     },
+    // });
+    // const res = await axios.request(params);
+    // return res.data;
     return `${data.username}/${data.password}`;
 }
 async function logout(): Promise<string> {
+    // const params = createRequestBackend({
+    //     url: 'logout',
+    //     method: 'POST',
+    // });
+    // const res = await axios.request(params);
+    // return res.data;
     return '';
 }
 
 async function getUser(): Promise<{ name: string }> {
+    // const params = createRequestBackend({
+    //     url: 'getUser',
+    //     method: 'GET',
+    // });
+    // const res = await axios.request(params);
+    // return res.data;
     return {
         name: 'Giulio',
     };
 }
 
 async function getStations(): Promise<{ stations: Tony.App.Station[] }> {
+    // const params = createRequestBackend({
+    //     url: 'getStations',
+    //     method: 'GET',
+    // });
+    // const res = await axios.request(params);
+    // return res.data;
     return {
         stations: [
             {
