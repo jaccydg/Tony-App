@@ -4,7 +4,7 @@ import LoginForm from '../components/auth/LoginForm.tsx';
 export default function LoginPage() {
     return (
         <Box
-            height={window.innerHeight}
+            height={`min(${window.innerHeight}px, 100vh)`}
             width='100vw'
             display='flex'
             justifyContent='center'

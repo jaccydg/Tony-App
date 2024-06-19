@@ -23,7 +23,7 @@ export default function StationsMap() {
                 {
                     home.stations.map((station: Tony.App.Station) => (
                         <Marker
-                            key={station.id}
+                            key={station.name}
                             width={50}
                             anchor={station.geo}
                             color={theme.palette.primary.main}

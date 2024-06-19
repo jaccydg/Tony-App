@@ -4,7 +4,7 @@ import SignupForm from '../components/auth/SignupForm.tsx';
 export default function SignupPage() {
     return (
         <Box
-            height={window.innerHeight}
+            height={`min(${window.innerHeight}px, 100vh)`}
             width='100vw'
             display='flex'
             justifyContent='center'
