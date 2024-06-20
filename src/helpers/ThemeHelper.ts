@@ -84,6 +84,14 @@ export const getCustomTheme = (themeMode: string) => {
             },
         },
         components: {
+            MuiCard: {
+                styleOverrides: {
+                    root: {
+                        borderRadius: '16px',
+                        textTransform: 'none',
+                    },
+                },
+            },
             MuiTextField: {
                 defaultProps: {
                     InputProps: {
@@ -97,23 +105,6 @@ export const getCustomTheme = (themeMode: string) => {
                         borderRadius: '32px',
                         // padding: '8px 16px',
                         textTransform: 'none',
-                    },
-                },
-            },
-            MuiFromControl: {
-                styleOverrides: {
-                    root: {
-                        width: '100%',
-                    },
-                },
-            },
-            MuiTab: {
-                styleOverrides: {
-                    root: {
-                        fontSize: '14px',
-                        letterSpacing: '1.2px',
-                        fontWeight: 400,
-                        color: '#4871F7',
                     },
                 },
             },

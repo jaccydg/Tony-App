@@ -75,26 +75,42 @@ async function getStations(): Promise<{ stations: Tony.App.Station[] }> {
     return {
         stations: [
             {
-                id: 's_psm',
                 name: 'Parco Seminario',
                 geo: [45.956556450410496, 12.676544837459007],
             },
             {
-                id: 's_uni',
                 name: 'Università',
                 geo: [45.95235518648734, 12.680690412190218],
             },
             {
-                id: 's_ald',
                 name: 'Aldi',
                 geo: [45.953751243075104, 12.687658577688712],
             },
             {
-                id: 's_nns',
                 name: 'Naonis',
                 geo: [45.95331995066523, 12.6725225753],
             },
         ],
+    };
+}
+
+async function getStationInfo(name: string): Promise<Tony.App.StationInfo> {
+    // const params = createRequestBackend({
+    //     url: 'getStationInfo',
+    //     method: 'GET',
+    //     data: {
+    //         name
+    // }
+    // });
+    // const res = await axios.request(params);
+    // return res.data;
+    const free = Math.floor((Math.random() * 30));
+    const total = free + Math.floor((Math.random() * 15));
+    return {
+        geo: [45.956556450410496, 12.676544837459007],
+        name,
+        free,
+        total,
     };
 }
 
@@ -104,6 +120,7 @@ const api = {
     getUser,
     logout,
     getStations,
+    getStationInfo,
 };
 
 export default api;

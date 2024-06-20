@@ -5,7 +5,10 @@ import { useSelector } from 'react-redux';
 import { navBarHeight } from '../../helpers/Layout.ts';
 import { State } from '../../store/store.ts';
 
-export default function StationsMap() {
+export default function StationsMap(props: { handleClick: Function }) {
+    const {
+        handleClick,
+    } = props;
     const home = useSelector((state: State) => state.home);
     const theme: any = useTheme();
 
@@ -27,7 +30,7 @@ export default function StationsMap() {
                             width={50}
                             anchor={station.geo}
                             color={theme.palette.primary.main}
-                            onClick={() => alert(station.name)}
+                            onClick={() => handleClick(station.name)}
                         />
                     ))
                 }
