@@ -14,7 +14,7 @@ export const errorSlice = createSlice({
     initialState,
     reducers: {
         resetErrorPageState: () => initialState,
-        setErrorPage: (state, action) => {
+        setErrorPage: (state, action: { payload: Tony.App.Error }) => {
             state.errorPage = {
                 enabled: true,
                 title: action.payload.title,

@@ -1,5 +1,7 @@
+import Scanner from '../components/qr/Scanner.tsx';
+
 export default function QrScanPage() {
     return (
-        <div>QrScanPage</div>
+        <Scanner />
     );
 }
