@@ -33,7 +33,7 @@ export default function LoginForm() {
 
     return (
         <Box sx={{
-            width: desktop ? 540 : '95%',
+            width: desktop ? 540 : '85%',
         }}
         >
             <FormLogo />
