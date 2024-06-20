@@ -13,6 +13,7 @@ const SignupPage = lazy(() => import('../pages/SignupPage.tsx'));
 const BalancePage = lazy(() => import('../pages/BalancePage.tsx'));
 const ProfilePage = lazy(() => import('../pages/HomePage.tsx'));
 const NotFoundPage = lazy(() => import('../pages/ProfilePage.tsx'));
+const QrScanPage = lazy(() => import('../pages/QrScanPage.tsx'));
 
 export default function AppRouter() {
     return (
@@ -26,6 +27,7 @@ export default function AppRouter() {
                         <Route index element={requireAuth(<HomePage />)} />
                         <Route path={routes.balance} element={requireAuth(<BalancePage />)} />
                         <Route path={routes.profile} element={requireAuth(<ProfilePage />)} />
+                        <Route path={routes.qr} element={requireAuth(<QrScanPage />)} />
                     </Route>
                     <Route path='*' element={<NotFoundPage />} />
                 </Routes>

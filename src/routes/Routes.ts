@@ -4,6 +4,7 @@ const routes = {
     signup: '/signup',
     balance: '/balance',
     profile: '/profile',
+    qr: '/qr',
 };
 
 export default routes;
