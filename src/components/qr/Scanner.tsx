@@ -3,8 +3,6 @@ import QrReader from 'react-qr-scanner';
 import { useEffect, useState } from 'react';
 import { Box, IconButton } from '@mui/material';
 import CameraswitchIcon from '@mui/icons-material/Cameraswitch';
-import { setError } from '../../slices/runtimeConfigSlice.ts';
-import { setErrorPage } from '../../slices/errorSlice.ts';
 import { navBarHeight } from '../../helpers/Layout.ts';
 
 export default function Scanner() {
@@ -17,8 +15,7 @@ export default function Scanner() {
         if (data) alert(data.text);
     };
     const handleError = (err: any) => {
-        setError();
-        setErrorPage({ title: 'QR Error', message: err });
+        console.error(err);
     };
 
     const load = async () => {

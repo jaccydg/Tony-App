@@ -1,7 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import authReducer from '../slices/authSlice.ts';
 import backdropReducer from '../slices/backdropSlice.ts';
-import errorReducer from '../slices/errorSlice.ts';
 import loaderReducer from '../slices/loaderSlice.ts';
 import navigationReducer from '../slices/navigationSlice.ts';
 import runtimeConfigReducer from '../slices/runtimeConfigSlice.ts';
@@ -12,7 +11,6 @@ const store = configureStore({
     reducer: {
         auth: authReducer,
         backdrop: backdropReducer,
-        error: errorReducer,
         loader: loaderReducer,
         navigation: navigationReducer,
         runtimeConfig: runtimeConfigReducer,

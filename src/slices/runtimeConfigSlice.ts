@@ -2,7 +2,6 @@
 import { Dispatch, createSlice } from '@reduxjs/toolkit';
 import api from '../api/Api.ts';
 import { setRuntimeConfig } from '../helpers/AppRuntimeConfig.ts';
-import { setErrorPage } from './errorSlice.ts';
 import { setBackdrop, unsetBackdrop } from './backdropSlice.ts';
 
 const initialState = {
@@ -35,10 +34,6 @@ export const fetchAppRuntimeConfig = () => async (dispatch: Dispatch) => {
         setTimeout(() => dispatch(setSuccess()), 300);
     } catch (err: any) {
         dispatch(setError());
-        dispatch(setErrorPage({
-            title: 'Errore configurazione runtime',
-            message: err.message,
-        }));
     }
     dispatch(unsetBackdrop());
 };
