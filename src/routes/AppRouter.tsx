@@ -11,7 +11,7 @@ const HomePage = lazy(() => import('../pages/HomePage.tsx'));
 const LoginPage = lazy(() => import('../pages/LoginPage.tsx'));
 const SignupPage = lazy(() => import('../pages/SignupPage.tsx'));
 const BalancePage = lazy(() => import('../pages/BalancePage.tsx'));
-const ProfilePage = lazy(() => import('../pages/HomePage.tsx'));
+const ProfilePage = lazy(() => import('../pages/ProfilePage.tsx'));
 const NotFoundPage = lazy(() => import('../pages/ProfilePage.tsx'));
 const QrScanPage = lazy(() => import('../pages/QrScanPage.tsx'));
 
