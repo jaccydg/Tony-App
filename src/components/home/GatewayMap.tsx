@@ -30,7 +30,7 @@ export default function GatewaysMap(props: { handleClick: Function }) {
                             width={50}
                             anchor={[gateway.latitude, gateway.longitude]}
                             color={theme.palette.primary.main}
-                            onClick={() => handleClick(gateway.name)}
+                            onClick={() => handleClick(gateway.id)}
                         />
                     ))
                 }

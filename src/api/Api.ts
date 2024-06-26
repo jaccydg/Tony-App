@@ -74,24 +74,13 @@ async function getGateways(): Promise<{ gateways: Tony.App.Gateway[] }> {
     return res.data;
 }
 
-async function getGatewayInfo(name: string): Promise<Tony.App.GatewayInfo> {
-    // const params = createRequestBackend({
-    //     url: 'Gateway/name',
-    //     method: 'GET',
-    //     data: {
-    //         name
-    // }
-    // });
-    // const res = await axios.request(params);
-    // return res.data;
-    const free = Math.floor((Math.random() * 30));
-    const total = free + Math.floor((Math.random() * 15));
-    return {
-        geo: [45.956556450410496, 12.676544837459007],
-        name,
-        free,
-        total,
-    };
+async function getGatewayInfo(id: number): Promise<Tony.App.GatewayInfo> {
+    const params = createRequestBackend({
+        url: `Gateways/${id}/GetGatewayInfo`,
+        method: 'GET',
+    });
+    const res = await axios.request(params);
+    return res.data;
 }
 
 const api = {

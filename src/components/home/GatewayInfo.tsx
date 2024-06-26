@@ -16,7 +16,7 @@ export default function GatewayInfo(props: { open: boolean, setOpen: Function, g
     };
 
     const handleOpenNavigator = () => {
-        if (gateway) window.open(`https://maps.google.com?q=${gateway.geo[0]},${gateway.geo[1]}`);
+        if (gateway) window.open(`https://maps.google.com?q=${gateway.latitude},${gateway.longitude}`);
     };
 
     if (gateway) {
@@ -35,7 +35,7 @@ export default function GatewayInfo(props: { open: boolean, setOpen: Function, g
                     <Card>
                         <Box height='20vh' p={3}>
                             <Typography variant='h4'>{`${gateway.name} Station`}</Typography>
-                            <Typography mt={1}>{`Available spots: ${gateway.free} / ${gateway.total}`}</Typography>
+                            <Typography mt={1}>{`Available spots: ${gateway.freeChargingStations} / ${gateway.totalChargingStations}`}</Typography>
                             <Box
                                 sx={{
                                     position: 'absolute',

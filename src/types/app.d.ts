@@ -2,14 +2,15 @@ declare namespace Tony.App {
     interface Gateway {
         id: number,
         name: string,
-        longitude: number
+        longitude: number,
         latitude: number,
     }
     interface GatewayInfo {
-        geo: [number, number],
-        free: number,
-        total: number,
         name: string,
+        longitude: number,
+        latitude: number,
+        freeChargingStations: number,
+        totalChargingStations: number,
     }
     interface Error {
         title: string,

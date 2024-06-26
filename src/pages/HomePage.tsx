@@ -9,8 +9,8 @@ export default function HomePage() {
     const [gatewayInfoOpen, setGatewayInfoOpen] = useState(false);
     const [openGateway, setOpenGateway] = useState<undefined | Tony.App.GatewayInfo>(undefined);
 
-    const handleOpenGateway = async (name: string) => {
-        const gateway = await api.getGatewayInfo(name);
+    const handleOpenGateway = async (id: number) => {
+        const gateway = await api.getGatewayInfo(id);
         setOpenGateway(gateway);
         setGatewayInfoOpen(true);
     };

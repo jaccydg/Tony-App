@@ -20,11 +20,14 @@ export default function LoginForm() {
     const [usernameError, setUsernameError] = useState(false);
     const [passwordError, setPasswordError] = useState(false);
 
-    const handleClickLogin = () => {
+    const handleClickLogin = async () => {
         setUsernameError(!username);
         setPasswordError(!password);
         if (username && password) {
-            dispacth(login({ email: username, password }) as any);
+            if (!(await dispacth(login({ email: username, password }) as any))) {
+                setUsernameError(true);
+                setPasswordError(true);
+            }
         }
     };
     const handleChangeUsername = (event: any) => setUsername(event.target.value);

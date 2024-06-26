@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 import { Dispatch, createSlice } from '@reduxjs/toolkit';
 import api from '../api/Api.ts';
-import { getAuthToken, setAuthToken } from '../helpers/AuthHelper.ts';
+import { getAuthToken, setAuthToken, setRefreshRoken } from '../helpers/AuthHelper.ts';
 // eslint-disable-next-line import/no-cycle
 import { resetAppState } from './resetSlice.ts';
 import { loadGatewayMarkers } from './homeSlice.ts';
@@ -82,12 +82,20 @@ export const authCookieCheck = () => async (dispatch: Dispatch) => {
     dispatch(unsetBackdrop());
 };
 
+// eslint-disable-next-line consistent-return
 export const login = (data: Tony.Auth.LoginData) => async (dispatch: Dispatch) => {
     dispatch(setBackdrop());
-    const response = await api.login(data);
-    setAuthToken(response.accessToken, response.expiresIn);
-    setTimeout(() => dispatch(setCookieCheckEnabled()), 300);
-    dispatch(unsetBackdrop());
+    try {
+        const response = await api.login(data);
+        setAuthToken(response.accessToken, response.expiresIn);
+        setRefreshRoken(response.refreshToken);
+        setTimeout(() => dispatch(setCookieCheckEnabled()), 300);
+        dispatch(unsetBackdrop());
+        return true;
+    } catch (err) {
+        dispatch(unsetBackdrop());
+        return false;
+    }
 };
 
 export const logout = () => async (dispatch: Dispatch) => {
