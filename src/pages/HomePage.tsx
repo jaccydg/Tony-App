@@ -1,24 +1,24 @@
 import { useState } from 'react';
 import { Box } from '@mui/material';
-import StationsMap from '../components/home/StationsMap.tsx';
-import StationInfo from '../components/home/StationInfo.tsx';
+import GatewaysMap from '../components/home/GatewayMap.tsx';
+import GatewayInfo from '../components/home/GatewayInfo.tsx';
 import api from '../api/Api.ts';
 import QrButton from '../components/home/QrButton.tsx';
 
 export default function HomePage() {
-    const [stationInfoOpen, setStationInfoOpen] = useState(false);
-    const [openStation, setOpenStation] = useState<undefined | Tony.App.StationInfo>(undefined);
+    const [gatewayInfoOpen, setGatewayInfoOpen] = useState(false);
+    const [openGateway, setOpenGateway] = useState<undefined | Tony.App.GatewayInfo>(undefined);
 
-    const handleOpenStation = async (name: string) => {
-        const station = await api.getStationInfo(name);
-        setOpenStation(station);
-        setStationInfoOpen(true);
+    const handleOpenGateway = async (name: string) => {
+        const gateway = await api.getGatewayInfo(name);
+        setOpenGateway(gateway);
+        setGatewayInfoOpen(true);
     };
 
     return (
         <Box>
-            <StationsMap handleClick={handleOpenStation} />
-            <StationInfo open={stationInfoOpen} setOpen={setStationInfoOpen} station={openStation} />
+            <GatewaysMap handleClick={handleOpenGateway} />
+            <GatewayInfo open={gatewayInfoOpen} setOpen={setGatewayInfoOpen} gateway={openGateway} />
             <QrButton />
         </Box>
     );

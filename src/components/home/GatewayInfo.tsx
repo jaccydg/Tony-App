@@ -4,11 +4,11 @@ import {
     Modal, Typography,
 } from '@mui/material';
 
-export default function StationInfo(props: { open: boolean, setOpen: Function, station: Tony.App.StationInfo | undefined }) {
+export default function GatewayInfo(props: { open: boolean, setOpen: Function, gateway: Tony.App.GatewayInfo | undefined }) {
     const {
         open,
         setOpen,
-        station,
+        gateway,
     } = props;
 
     const handleClose = () => {
@@ -16,10 +16,10 @@ export default function StationInfo(props: { open: boolean, setOpen: Function, s
     };
 
     const handleOpenNavigator = () => {
-        if (station) window.open(`https://maps.google.com?q=${station.geo[0]},${station.geo[1]}`);
+        if (gateway) window.open(`https://maps.google.com?q=${gateway.geo[0]},${gateway.geo[1]}`);
     };
 
-    if (station) {
+    if (gateway) {
         return (
             <Modal
                 open={open}
@@ -34,8 +34,8 @@ export default function StationInfo(props: { open: boolean, setOpen: Function, s
                 >
                     <Card>
                         <Box height='20vh' p={3}>
-                            <Typography variant='h4'>{`${station.name} Station`}</Typography>
-                            <Typography mt={1}>{`Available spots: ${station.free} / ${station.total}`}</Typography>
+                            <Typography variant='h4'>{`${gateway.name} Station`}</Typography>
+                            <Typography mt={1}>{`Available spots: ${gateway.free} / ${gateway.total}`}</Typography>
                             <Box
                                 sx={{
                                     position: 'absolute',

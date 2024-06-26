@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { navBarHeight } from '../../helpers/Layout.ts';
 import { State } from '../../store/store.ts';
 
-export default function StationsMap(props: { handleClick: Function }) {
+export default function GatewaysMap(props: { handleClick: Function }) {
     const {
         handleClick,
     } = props;
@@ -24,13 +24,13 @@ export default function StationsMap(props: { handleClick: Function }) {
                 zoomSnap={false}
             >
                 {
-                    home.stations.map((station: Tony.App.Station) => (
+                    home.gateway.map((gateway: Tony.App.Gateway) => (
                         <Marker
-                            key={station.name}
+                            key={gateway.id}
                             width={50}
-                            anchor={station.geo}
+                            anchor={[gateway.latitude, gateway.longitude]}
                             color={theme.palette.primary.main}
-                            onClick={() => handleClick(station.name)}
+                            onClick={() => handleClick(gateway.name)}
                         />
                     ))
                 }

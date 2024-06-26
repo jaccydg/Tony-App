@@ -3,26 +3,26 @@ import { Dispatch, createSlice } from '@reduxjs/toolkit';
 import api from '../api/Api.ts';
 
 const initialState = {
-    stations: [],
+    gateway: [],
 };
 
 export const homeSlice = createSlice({
     name: 'home',
     initialState,
     reducers: {
-        setStations: (state, action) => {
-            state.stations = action.payload;
+        setGateways: (state, action) => {
+            state.gateway = action.payload;
         },
     },
 });
 
 export const {
-    setStations,
+    setGateways,
 } = homeSlice.actions;
 
-export const loadStationMarkers = () => async (dispatch: Dispatch) => {
-    const response = await api.getStations();
-    dispatch(setStations(response.stations));
+export const loadGatewayMarkers = () => async (dispatch: Dispatch) => {
+    const response = await api.getGateways();
+    dispatch(setGateways(response));
 };
 
 export default homeSlice.reducer;

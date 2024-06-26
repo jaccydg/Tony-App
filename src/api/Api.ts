@@ -30,18 +30,18 @@ const getRuntimeConfigJsonFile = async () => {
     return res.data;
 };
 
-async function login(data: Tony.Auth.LoginData): Promise<string> {
-    // const params = createRequestBackend({
-    //     url: 'login',
-    //     method: 'POST',
-    //     data: {
-    //         username: data.username,
-    //         password: data.password,
-    //     },
-    // });
-    // const res = await axios.request(params);
-    // return res.data;
-    return `${data.username}/${data.password}`;
+async function login(data: Tony.Auth.LoginData): Promise<Tony.Auth.LoginResponse> {
+    const params = createRequestBackend({
+        url: 'login',
+        method: 'POST',
+        data: {
+            email: data.email,
+            password: data.password,
+        },
+    });
+    const res = await axios.request(params);
+    return res.data;
+    // return `${data.username}/${data.password}`;
 }
 async function logout(): Promise<string> {
     // const params = createRequestBackend({
@@ -65,38 +65,18 @@ async function getUser(): Promise<{ name: string }> {
     };
 }
 
-async function getStations(): Promise<{ stations: Tony.App.Station[] }> {
-    // const params = createRequestBackend({
-    //     url: 'getStations',
-    //     method: 'GET',
-    // });
-    // const res = await axios.request(params);
-    // return res.data;
-    return {
-        stations: [
-            {
-                name: 'Parco Seminario',
-                geo: [45.956556450410496, 12.676544837459007],
-            },
-            {
-                name: 'Università',
-                geo: [45.95235518648734, 12.680690412190218],
-            },
-            {
-                name: 'Aldi',
-                geo: [45.953751243075104, 12.687658577688712],
-            },
-            {
-                name: 'Naonis',
-                geo: [45.95331995066523, 12.6725225753],
-            },
-        ],
-    };
+async function getGateways(): Promise<{ gateways: Tony.App.Gateway[] }> {
+    const params = createRequestBackend({
+        url: 'Gateways',
+        method: 'GET',
+    });
+    const res = await axios.request(params);
+    return res.data;
 }
 
-async function getStationInfo(name: string): Promise<Tony.App.StationInfo> {
+async function getGatewayInfo(name: string): Promise<Tony.App.GatewayInfo> {
     // const params = createRequestBackend({
-    //     url: 'getStationInfo',
+    //     url: 'Gateway/name',
     //     method: 'GET',
     //     data: {
     //         name
@@ -119,8 +99,8 @@ const api = {
     login,
     getUser,
     logout,
-    getStations,
-    getStationInfo,
+    getGateways,
+    getGatewayInfo,
 };
 
 export default api;

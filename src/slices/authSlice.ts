@@ -4,7 +4,7 @@ import api from '../api/Api.ts';
 import { getAuthToken, setAuthToken } from '../helpers/AuthHelper.ts';
 // eslint-disable-next-line import/no-cycle
 import { resetAppState } from './resetSlice.ts';
-import { loadStationMarkers } from './homeSlice.ts';
+import { loadGatewayMarkers } from './homeSlice.ts';
 import { setBackdrop, unsetBackdrop } from './backdropSlice.ts';
 
 const initialState = {
@@ -63,7 +63,7 @@ export const fetchInitData = () => async (dispatch: Dispatch) => {
     try {
         await Promise.all([
             dispatch(fetchUserData() as any),
-            dispatch(loadStationMarkers() as any),
+            dispatch(loadGatewayMarkers() as any),
         ]);
         dispatch(setInitDataFullfilled());
     } catch { /* empty */ }
@@ -84,8 +84,8 @@ export const authCookieCheck = () => async (dispatch: Dispatch) => {
 
 export const login = (data: Tony.Auth.LoginData) => async (dispatch: Dispatch) => {
     dispatch(setBackdrop());
-    const token = await api.login(data);
-    setAuthToken(token);
+    const response = await api.login(data);
+    setAuthToken(response.accessToken, response.expiresIn);
     setTimeout(() => dispatch(setCookieCheckEnabled()), 300);
     dispatch(unsetBackdrop());
 };

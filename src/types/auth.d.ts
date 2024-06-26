@@ -1,6 +1,12 @@
 declare namespace Tony.Auth {
     interface LoginData {
-        username: string,
+        email: string,
         password: string,
+    }
+    interface LoginResponse {
+        tokenType: string,
+        accessToken: string,
+        expiresIn: number,
+        refreshToken: string,
     }
 }

@@ -1,17 +1,20 @@
 import Cookies from 'js-cookie';
 
-const authCookieName = 'token';
+const accessTokenName = 'accessToken';
+const refreshTokenName = 'refreshToken';
 
-const setAuthToken = (value: string) => {
-    // const inOneMinute = new Date(new Date().getTime() + 1 * 60 * 1000)
-    const inOneDay = 1;
-    Cookies.set(authCookieName, value, { expires: inOneDay });
+const setAuthToken = (value: string, expires: number) => {
+    Cookies.set(accessTokenName, value, { expires });
+};
+const setRefreshRoken = (value: string, expires: number) => {
+    Cookies.set(refreshTokenName, value, { expires });
 };
 
-const getAuthToken = () => Cookies.get(authCookieName);
+const getAuthToken = () => Cookies.get(accessTokenName);
+const getRefreshRoken = () => Cookies.get(refreshTokenName);
 
 const deleteAuthToken = () => {
-    Cookies.remove(authCookieName);
+    Cookies.remove(accessTokenName);
 };
 
 export {

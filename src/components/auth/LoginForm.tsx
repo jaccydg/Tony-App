@@ -24,7 +24,7 @@ export default function LoginForm() {
         setUsernameError(!username);
         setPasswordError(!password);
         if (username && password) {
-            dispacth(login({ username, password }) as any);
+            dispacth(login({ email: username, password }) as any);
         }
     };
     const handleChangeUsername = (event: any) => setUsername(event.target.value);

@@ -30,7 +30,7 @@ export default function LoginForm() {
         setPasswordError(!password || password !== confirm);
         setConfirmError(!confirm || password !== confirm);
         if (username && email && password && confirm) {
-            dispatch(login({ username, password }) as any);
+            dispatch(login({ email: username, password }) as any);
         }
     };
     const handleChangeUsername = (event: any) => setUsername(event.target.value);
