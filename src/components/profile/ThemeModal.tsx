@@ -5,13 +5,16 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
-import { List, ListItem, ListItemIcon, ListItemText, Grid, Card, CardActionArea } from '@mui/material';
-import { useTheme } from '@emotion/react';
+import {
+    List, ListItem, ListItemIcon,
+    ListItemText, Grid, Card,
+    CardActionArea,
+} from '@mui/material';
 import { useDispatch } from 'react-redux';
-import { toggleThemeModePersist } from '../../slices/themeSlice';
+import { toggleThemeModePersist } from '../../slices/themeSlice.ts';
 
 const style = {
-    position: 'absolute' as 'absolute',
+    position: 'absolute' as const,
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
@@ -23,13 +26,12 @@ const style = {
     p: 4,
 };
 
-const ThemeModal: React.FC = () => {
+export default function ThemeModal() {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
     const dispatch = useDispatch();
-    const theme = useTheme();
 
     const handleClick = () => {
         dispatch(toggleThemeModePersist() as any);
@@ -40,8 +42,8 @@ const ThemeModal: React.FC = () => {
             <List onClick={handleOpen}>
                 <ListItem>
                     <ListItemIcon>
-                        <PaletteIcon sx={{ marginRight: "32px", marginTop: "4px" }} />
-                        <ListItemText primary="Aspetto" />
+                        <PaletteIcon sx={{ marginRight: '32px', marginTop: '4px' }} />
+                        <ListItemText primary='Aspetto' />
                     </ListItemIcon>
                 </ListItem>
             </List>
@@ -50,17 +52,25 @@ const ThemeModal: React.FC = () => {
                 onClose={handleClose}
             >
                 <Box sx={style}>
-                    <Typography variant="h6" component="h2">
+                    <Typography variant='h6' component='h2'>
                         Theme
                     </Typography>
-                    <Box sx={{ mt: 2, display: 'flex', justifyContent: 'center', alignItems: 'center', height: '75%', mr: -1.5 }}>
-                        <Grid container spacing={2} justifyContent="center" alignItems="center" >
+                    <Box sx={{
+                        mt: 2,
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        height: '75%',
+                        mr: -1.5,
+                    }}
+                    >
+                        <Grid container spacing={2} justifyContent='center' alignItems='center'>
                             <Grid item xs={4} mr={2} onClick={handleClick}>
                                 <Card>
                                     <CardActionArea>
-                                        <Box display="flex" flexDirection="column" alignItems="center" p={2}>
+                                        <Box display='flex' flexDirection='column' alignItems='center' p={2}>
                                             <LightModeIcon />
-                                            <Typography variant="body2">Light</Typography>
+                                            <Typography variant='body2'>Light</Typography>
                                         </Box>
                                     </CardActionArea>
                                 </Card>
@@ -68,9 +78,9 @@ const ThemeModal: React.FC = () => {
                             <Grid item xs={4} ml={2} onClick={handleClick}>
                                 <Card>
                                     <CardActionArea>
-                                        <Box display="flex" flexDirection="column" alignItems="center" p={2}>
+                                        <Box display='flex' flexDirection='column' alignItems='center' p={2}>
                                             <DarkModeIcon />
-                                            <Typography variant="body2">Dark</Typography>
+                                            <Typography variant='body2'>Dark</Typography>
                                         </Box>
                                     </CardActionArea>
                                 </Card>
@@ -80,5 +90,5 @@ const ThemeModal: React.FC = () => {
                 </Box>
             </Modal>
         </div>
-    )
-};
+    );
+}
