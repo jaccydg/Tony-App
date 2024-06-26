@@ -8,7 +8,7 @@ import { toLoginPage } from '../../actions/navigation.ts';
 import TextInput from './TextInput.tsx';
 import PasswordInput from './PasswordInput.tsx';
 import FormLogo from './FormLogo.tsx';
-import { login, register } from '../../slices/authSlice.ts';
+import { register } from '../../slices/authSlice.ts';
 
 export default function LoginForm() {
     const dispatch = useDispatch();

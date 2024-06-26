@@ -17,7 +17,7 @@ const StyledContainer = styled(Container)(({ theme }) => ({
     overflowY: 'auto',
 }));
 
-const StyledAvatar = styled(Avatar)(({ theme }) => ({
+const StyledAvatar = styled(Avatar)(() => ({
     width: 100,
     height: 100,
     margin: '0 auto',
