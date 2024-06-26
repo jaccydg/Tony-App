@@ -82,7 +82,6 @@ export const authCookieCheck = () => async (dispatch: Dispatch) => {
     dispatch(unsetBackdrop());
 };
 
-// eslint-disable-next-line consistent-return
 export const login = (data: Tony.Auth.LoginData) => async (dispatch: Dispatch) => {
     dispatch(setBackdrop());
     try {
@@ -96,6 +95,19 @@ export const login = (data: Tony.Auth.LoginData) => async (dispatch: Dispatch) =
         dispatch(unsetBackdrop());
         return false;
     }
+};
+
+export const register = (data: Tony.Auth.LoginData) => async (dispatch: Dispatch) => {
+    dispatch(setBackdrop());
+    try {
+        const status = await api.register(data);
+        if (status === 200) {
+            return await dispatch(login(data) as any);
+        }
+    } catch (err) {
+        dispatch(unsetBackdrop());
+    }
+    return false;
 };
 
 export const logout = () => async (dispatch: Dispatch) => {

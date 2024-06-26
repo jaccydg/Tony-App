@@ -11,26 +11,26 @@ import FormLogo from './FormLogo.tsx';
 import { login } from '../../slices/authSlice.ts';
 
 export default function LoginForm() {
-    const dispacth = useDispatch();
+    const dispatch = useDispatch();
     const theme = useTheme();
     const desktop = useMediaQuery(theme.breakpoints.up('sm'));
 
-    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [usernameError, setUsernameError] = useState(false);
+    const [emailError, setEmailError] = useState(false);
     const [passwordError, setPasswordError] = useState(false);
 
     const handleClickLogin = async () => {
-        setUsernameError(!username);
+        setEmailError(!email);
         setPasswordError(!password);
-        if (username && password) {
-            if (!(await dispacth(login({ email: username, password }) as any))) {
-                setUsernameError(true);
+        if (email && password) {
+            if (!(await dispatch(login({ email, password }) as any))) {
+                setEmailError(true);
                 setPasswordError(true);
             }
         }
     };
-    const handleChangeUsername = (event: any) => setUsername(event.target.value);
+    const handleChangeEmail = (event: any) => setEmail(event.target.value);
     const handleChangePassword = (event: any) => setPassword(event.target.value);
     const handleFormSubmit = (event: any) => event.preventDefault();
 
@@ -45,11 +45,11 @@ export default function LoginForm() {
                     <Grid container spacing={3}>
                         <Grid item xs={12}>
                             <TextInput
-                                value={username}
-                                error={usernameError}
-                                handleChange={handleChangeUsername}
-                                label='Username'
-                                type='username'
+                                value={email}
+                                error={emailError}
+                                handleChange={handleChangeEmail}
+                                label='Email'
+                                type='email'
                             />
                         </Grid>
                         <Grid item xs={12}>

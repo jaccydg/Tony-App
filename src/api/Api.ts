@@ -41,7 +41,18 @@ async function login(data: Tony.Auth.LoginData): Promise<Tony.Auth.LoginResponse
     });
     const res = await axios.request(params);
     return res.data;
-    // return `${data.username}/${data.password}`;
+}
+async function register(data: Tony.Auth.LoginData): Promise<number> {
+    const params = createRequestBackend({
+        url: 'register',
+        method: 'POST',
+        data: {
+            email: data.email,
+            password: data.password,
+        },
+    });
+    const res = await axios.request(params);
+    return res.status;
 }
 async function logout(): Promise<string> {
     // const params = createRequestBackend({
@@ -86,6 +97,7 @@ async function getGatewayInfo(id: number): Promise<Tony.App.GatewayInfo> {
 const api = {
     getRuntimeConfigJsonFile,
     login,
+    register,
     getUser,
     logout,
     getGateways,

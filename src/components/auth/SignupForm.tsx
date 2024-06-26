@@ -8,32 +8,32 @@ import { toLoginPage } from '../../actions/navigation.ts';
 import TextInput from './TextInput.tsx';
 import PasswordInput from './PasswordInput.tsx';
 import FormLogo from './FormLogo.tsx';
-import { login } from '../../slices/authSlice.ts';
+import { login, register } from '../../slices/authSlice.ts';
 
 export default function LoginForm() {
     const dispatch = useDispatch();
     const theme = useTheme();
     const desktop = useMediaQuery(theme.breakpoints.up('sm'));
 
-    const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirm, setConfirm] = useState('');
-    const [usernameError, setUsernameError] = useState(false);
     const [emailError, setEmailError] = useState(false);
     const [passwordError, setPasswordError] = useState(false);
     const [confirmError, setConfirmError] = useState(false);
 
-    const handleClickLogin = () => {
-        setUsernameError(!username);
+    const handleClickLogin = async () => {
         setEmailError(!email);
         setPasswordError(!password || password !== confirm);
         setConfirmError(!confirm || password !== confirm);
-        if (username && email && password && confirm) {
-            dispatch(login({ email: username, password }) as any);
+        if (email && password && confirm && password === confirm) {
+            if (!(await dispatch(register({ email, password }) as any))) {
+                setEmailError(true);
+                setPasswordError(true);
+                setConfirmError(true);
+            }
         }
     };
-    const handleChangeUsername = (event: any) => setUsername(event.target.value);
     const handleChangeEmail = (event: any) => setEmail(event.target.value);
     const handleChangePassword = (event: any) => setPassword(event.target.value);
     const handleChangeConfirm = (event: any) => setConfirm(event.target.value);
@@ -48,15 +48,6 @@ export default function LoginForm() {
             <Box mt={5}>
                 <form onSubmit={handleFormSubmit}>
                     <Grid container spacing={3}>
-                        <Grid item xs={12}>
-                            <TextInput
-                                value={username}
-                                error={usernameError}
-                                handleChange={handleChangeUsername}
-                                label='Username'
-                                type='username'
-                            />
-                        </Grid>
                         <Grid item xs={12}>
                             <TextInput
                                 value={email}

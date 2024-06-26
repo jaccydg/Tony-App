@@ -23,7 +23,7 @@ export default function Scanner() {
         const videoDevices = devs.filter((device) => device.kind === 'videoinput').slice(0, 2);
         setDevices(videoDevices);
         setDeviceId(videoDevices[videoDevices.length - 1].deviceId);
-        setMirrorCamera(videoDevices[videoDevices.length - 1].label.toLowerCase().includes('front'));
+        setMirrorCamera(!videoDevices[videoDevices.length - 1].label.toLowerCase().includes('rear'));
     };
 
     const toggleCameraSide = () => {
