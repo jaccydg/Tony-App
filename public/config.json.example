@@ -1,0 +1,4 @@
+{
+    "BACKEND_URL": "https://localhost:3000/api",
+    "LOADER_TIME": 1000
+}
