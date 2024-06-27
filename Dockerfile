@@ -6,4 +6,4 @@ COPY . .
 
 RUN npm i -g serve
 
-CMD [ "serve", "-l", "8080", " ]
+CMD [ "serve", "-l", "8080" ]

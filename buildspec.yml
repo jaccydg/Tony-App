@@ -11,8 +11,10 @@ phases:
       - npm run build
   post_build:
     commands:
-      - echo Copying Dockerfile to dist...
+      - echo Copying Deploy Files to dist...
       - cp Dockerfile dist
+      - cp appspec.yml dist
+      - cp -r scripts dist
       - echo Build completed successfully.
 
 artifacts:
