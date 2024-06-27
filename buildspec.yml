@@ -9,12 +9,10 @@ phases:
     commands:
       - echo Building the React app...
       - npm run build
-  dockerfile:
+  post_build:
     commands:
       - echo Copying Dockerfile to dist...
       - cp Dockerfile dist
-  post_build:
-    commands:
       - echo Build completed successfully.
 
 artifacts:
