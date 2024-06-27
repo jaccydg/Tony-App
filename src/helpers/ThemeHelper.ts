@@ -3,6 +3,16 @@ export const getCustomTheme = (themeMode: string) => {
     const theme = {
         palette: {
             mode: themeMode,
+            breakpoints: {
+                values: {
+                    xs: 0,
+                    sm: 600,
+                    md: 900,
+                    lg: 1200,
+                    xl: 1536,
+                    xxl: 2048,
+                },
+            },
             background: {
                 default: light ? '#FFFFFF' : '#181818',
                 paper: light ? '#FFFFFF' : '#181818',

@@ -13,7 +13,7 @@ import ButtonLightDarkTheme from './ButtonLightDarkTheme.tsx';
 import { navBarHeight } from '../../helpers/Layout.ts';
 import { logout } from '../../slices/authSlice.ts';
 
-export default function NavBar() {
+export default function NavBarMobile() {
     const dispatch = useDispatch();
     const location = useLocation();
     const pageValue = location.pathname === routes.home
