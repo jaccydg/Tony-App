@@ -1,20 +1,16 @@
 import {
     BottomNavigation, BottomNavigationAction,
-    Box, Button,
+    Box,
 } from '@mui/material';
 import { useLocation } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 import WalletIcon from '@mui/icons-material/Wallet';
 import PersonIcon from '@mui/icons-material/Person';
 import routes from '../../routes/Routes.ts';
 import { toPage } from '../../actions/navigation.ts';
-import ButtonLightDarkTheme from './ButtonLightDarkTheme.tsx';
 import { navBarHeight } from '../../helpers/Layout.ts';
-import { logout } from '../../slices/authSlice.ts';
 
 export default function NavBarMobile() {
-    const dispatch = useDispatch();
     const location = useLocation();
     const pageValue = location.pathname === routes.home
         || location.pathname === routes.balance
@@ -25,9 +21,6 @@ export default function NavBarMobile() {
         toPage(newValue);
     };
 
-    const handleClickLogout = () => {
-        dispatch(logout() as any);
-    };
 
     return (
         <div>
@@ -39,13 +32,6 @@ export default function NavBarMobile() {
                     right: 0,
                 }}
             >
-                <ButtonLightDarkTheme />
-                <Button
-                    variant='contained'
-                    onClick={handleClickLogout}
-                >
-                    Logout
-                </Button>
             </Box>
             <BottomNavigation
                 sx={{

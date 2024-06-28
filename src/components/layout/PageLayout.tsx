@@ -12,6 +12,7 @@ export default function PageLayout() {
         <Container
             maxWidth={false}
             disableGutters
+            style={{ overflow: 'scroll' }}
         >
             {
                 mobile
