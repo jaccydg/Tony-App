@@ -42,13 +42,13 @@ export default function CurrencyMenuItem() {
                 onClose={() => handleClose(selectedItem)}
                 TransitionComponent={Fade}
             >
-                <MenuItem onClick={() => handleClose('EUR')}>EUR</MenuItem>
-                <MenuItem onClick={() => handleClose('USD')}>USD</MenuItem>
-                <MenuItem onClick={() => handleClose('GBP')}>GBP</MenuItem>
-                <MenuItem onClick={() => handleClose('CNY')}>CNY</MenuItem>
-                <MenuItem onClick={() => handleClose('JPY')}>JPY</MenuItem>
-                <MenuItem onClick={() => handleClose('CHF')}>CHF</MenuItem>
-                <MenuItem onClick={() => handleClose('AED')}>AED</MenuItem>
+                <MenuItem onClick={() => handleClose('EUR €')}>EUR €</MenuItem>
+                <MenuItem onClick={() => handleClose('USD $')}>USD $</MenuItem>
+                <MenuItem onClick={() => handleClose('GBP £')}>GBP £</MenuItem>
+                <MenuItem onClick={() => handleClose('CNY ¥')}>CNY ¥</MenuItem>
+                <MenuItem onClick={() => handleClose('JPY ¥')}>JPY ¥</MenuItem>
+                <MenuItem onClick={() => handleClose('CHF ₣')}>CHF ₣</MenuItem>
+                <MenuItem onClick={() => handleClose('AED د.إ')}>AED د.إ</MenuItem>
             </Menu>
         </div>
     );

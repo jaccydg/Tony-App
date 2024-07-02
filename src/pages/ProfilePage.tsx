@@ -1,9 +1,8 @@
 import {
-    Avatar, Box, Button, Container,
+    Avatar, Box, Container,
     Divider, List, ListItem, ListItemIcon,
     ListItemText, Typography, styled,
 } from '@mui/material';
-import EditIcon from '@mui/icons-material/Edit';
 import CreditCardIcon from '@mui/icons-material/CreditCard';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ThemeToggles from '../components/profile/ThemeModal';
@@ -13,7 +12,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import { logout } from '../slices/authSlice';
 import { useDispatch } from 'react-redux';
 import { red } from '@mui/material/colors';
-
+import EditProfile from '../components/profile/EditProfile';
 
 const StyledContainer = styled(Container)(({ theme }) => ({
     marginTop: theme.spacing(4),
@@ -27,14 +26,10 @@ const StyledAvatar = styled(Avatar)(({ }) => ({
     margin: '0 auto',
 }));
 
-const StyledButton = styled(Button)(({ theme }) => ({
-    marginTop: theme.spacing(2),
-}));
-
-
 
 export default function ProfilePage() {
     const dispatch = useDispatch();
+
     const handleClickLogout = () => {
         dispatch(logout() as any);
     };
@@ -52,13 +47,9 @@ export default function ProfilePage() {
                 <Typography variant='body1' color='textSecondary'>
                     tonytony@chopper.it
                 </Typography>
-                <StyledButton
-                    variant='contained'
-                    color='primary'
-                    startIcon={<EditIcon />}
-                >
-                    Edit Profile
-                </StyledButton>
+                <EditProfile name={''} onSave={function (_newName: string): void {
+                    throw new Error('Function not implemented.');
+                } } />
             </Box>
             <Divider sx={{ my: 1.5 }} />
             <List>
