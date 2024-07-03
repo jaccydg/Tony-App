@@ -6,15 +6,15 @@ import {
 // import CopyIcon from '@mui/icons-material/FileCopy';
 import CreditCardIcon from '@mui/icons-material/CreditCard';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import ThemeToggles from '../components/profile/ThemeModal';
+import { useState } from 'react';
 import ColorLensIcon from '@mui/icons-material/ColorLens';
-import CurrencyMenuItem from '../components/profile/CurrencyMenu';
 import LogoutIcon from '@mui/icons-material/Logout';
-import { logout } from '../slices/authSlice';
 import { useDispatch } from 'react-redux';
 import { red } from '@mui/material/colors';
-import EditProfile from '../components/profile/EditProfile';
-import { useState } from 'react';
+import CurrencyMenuItem from '../components/profile/CurrencyMenu.tsx';
+import { logout } from '../slices/authSlice.ts';
+import ThemeToggles from '../components/profile/ThemeModal.tsx';
+import EditProfile from '../components/profile/EditProfile.tsx';
 
 const StyledContainer = styled(Container)(({ theme }) => ({
     marginTop: theme.spacing(4),

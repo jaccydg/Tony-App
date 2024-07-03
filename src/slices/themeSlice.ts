@@ -1,6 +1,5 @@
 /* eslint-disable no-param-reassign */
 import { Dispatch, createSlice } from '@reduxjs/toolkit';
-// eslint-disable-next-line import/no-cycle
 import { setUserSettingsProp } from '../helpers/LocalStorageHelper.ts';
 
 export const themeModes = {

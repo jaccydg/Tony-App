@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-cycle
 import { themeModes } from '../slices/themeSlice.ts';
 
 const userSettingsKey = 'user-settings';

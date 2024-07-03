@@ -2,7 +2,6 @@
 import { Dispatch, createSlice } from '@reduxjs/toolkit';
 import api from '../api/Api.ts';
 import { getAuthToken, setAuthToken, setRefreshRoken } from '../helpers/AuthHelper.ts';
-// eslint-disable-next-line import/no-cycle
 import { resetAppState } from './resetSlice.ts';
 import { loadGatewayMarkers } from './homeSlice.ts';
 import { setBackdrop, unsetBackdrop } from './backdropSlice.ts';

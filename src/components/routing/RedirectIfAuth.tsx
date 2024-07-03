@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import routes from '../../routes/Routes.ts';
 import { State } from '../../store/store.ts';
 
+// eslint-disable-next-line react-refresh/only-export-components
 function RedirectIfAuth(props: { children: JSX.Element }) {
     const { children } = props;
     const isUserAuthenticated = useSelector((state: State) => state.auth.isUserAuthenticated);

@@ -6,9 +6,7 @@ import Fade from '@mui/material/Fade';
 
 export default function CurrencyMenuItem() {
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-    const [selectedItem, setSelectedItem] = React.useState<string>(() => {
-        return localStorage.getItem('selectedCurrency') || 'EUR €';
-    });
+    const [selectedItem, setSelectedItem] = React.useState<string>(() => localStorage.getItem('selectedCurrency') || 'EUR €');
     const open = Boolean(anchorEl);
 
     const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -24,16 +22,16 @@ export default function CurrencyMenuItem() {
     return (
         <div>
             <Button
-                id="fade-button"
+                id='fade-button'
                 aria-controls={open ? 'fade-menu' : undefined}
-                aria-haspopup="true"
+                aria-haspopup='true'
                 aria-expanded={open ? 'true' : undefined}
                 onClick={handleClick}
             >
                 {selectedItem}
             </Button>
             <Menu
-                id="fade-menu"
+                id='fade-menu'
                 MenuListProps={{
                     'aria-labelledby': 'fade-button',
                 }}

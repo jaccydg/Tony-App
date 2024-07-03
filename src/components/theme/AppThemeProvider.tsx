@@ -24,7 +24,6 @@ export default function AppThemeProvider(props: { children: JSX.Element[] }) {
     );
 
     return (
-        // eslint-disable-next-line react/jsx-filename-extension
         <ThemeProvider theme={theme}>
             {children}
         </ThemeProvider>

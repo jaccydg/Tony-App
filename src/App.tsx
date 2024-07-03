@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-filename-extension */
 import { CssBaseline } from '@mui/material';
 import AppThemeProvider from './components/theme/AppThemeProvider.tsx';
 import AppBackdrop from './components/backdrop/AppBackdrop.tsx';

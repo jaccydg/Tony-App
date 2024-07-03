@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 declare namespace Tony.Auth {
     interface LoginData {
         email: string,

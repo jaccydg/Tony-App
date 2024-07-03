@@ -1,7 +1,4 @@
-import {
-    BottomNavigation, BottomNavigationAction,
-    Box,
-} from '@mui/material';
+import { BottomNavigation, BottomNavigationAction } from '@mui/material';
 import { useLocation } from 'react-router-dom';
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 import WalletIcon from '@mui/icons-material/Wallet';
@@ -21,18 +18,8 @@ export default function NavBarMobile() {
         toPage(newValue);
     };
 
-
     return (
         <div>
-            <Box
-                sx={{
-                    zIndex: 1000,
-                    position: 'fixed',
-                    top: 0,
-                    right: 0,
-                }}
-            >
-            </Box>
             <BottomNavigation
                 sx={{
                     position: 'fixed',

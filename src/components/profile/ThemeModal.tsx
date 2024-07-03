@@ -1,10 +1,10 @@
 import { styled } from '@mui/material/styles';
 import FormGroup from '@mui/material/FormGroup';
+import { useTheme } from '@emotion/react';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
 import { useDispatch } from 'react-redux';
-import { toggleThemeModePersist } from '../../slices/themeSlice';
-import { useTheme } from '@emotion/react';
+import { toggleThemeModePersist } from '../../slices/themeSlice.ts';
 
 const ThemeToggle = styled(Switch)(({ theme }) => ({
     width: 62,
@@ -43,6 +43,7 @@ const ThemeToggle = styled(Switch)(({ theme }) => ({
             backgroundPosition: 'center',
             backgroundImage: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewBox="0 0 20 20"><path fill="${encodeURIComponent(
                 '#fff',
+                // eslint-disable-next-line max-len
             )}" d="M9.305 1.667V3.75h1.389V1.667h-1.39zm-4.707 1.95l-.982.982L5.09 6.072l.982-.982-1.473-1.473zm10.802 0L13.927 5.09l.982.982 1.473-1.473-.982-.982zM10 5.139a4.872 4.872 0 00-4.862 4.86A4.872 4.872 0 0010 14.862 4.872 4.872 0 0014.86 10 4.872 4.872 0 0010 5.139zm0 1.389A3.462 3.462 0 0113.471 10a3.462 3.462 0 01-3.473 3.472A3.462 3.462 0 016.527 10 3.462 3.462 0 0110 6.528zM1.665 9.305v1.39h2.083v-1.39H1.666zm14.583 0v1.39h2.084v-1.39h-2.084zM5.09 13.928L3.616 15.4l.982.982 1.473-1.473-.982-.982zm9.82 0l-.982.982 1.473 1.473.982-.982-1.473-1.473zM9.305 16.25v2.083h1.389V16.25h-1.39z"/></svg>')`,
         },
     },
@@ -55,19 +56,19 @@ const ThemeToggle = styled(Switch)(({ theme }) => ({
 
 export default function ThemeToggles() {
     const dispatch = useDispatch();
-    const theme = useTheme();
+    const theme: any = useTheme();
 
     const handleClick = () => {
-        dispatch(toggleThemeModePersist());
+        dispatch(toggleThemeModePersist() as any);
     };
 
     const isDarkMode = theme.palette.mode === 'dark';
 
     return (
-        <FormGroup style={{ left: "2em" }}>
+        <FormGroup style={{ left: '2em' }}>
             <FormControlLabel
                 control={<ThemeToggle sx={{ mr: -2 }} defaultChecked={isDarkMode} />}
-                label=""
+                label=''
                 onClick={handleClick}
             />
         </FormGroup>
