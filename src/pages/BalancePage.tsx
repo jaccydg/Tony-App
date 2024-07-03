@@ -2,6 +2,7 @@ import {
     Typography, Box, Button,
     Avatar, MenuItem, Select,
     IconButton,
+    Card,
 } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
@@ -83,11 +84,10 @@ export default function BalancePage() {
                     Trasferisci
                 </Button>
             </Box>
-            <Box
+            <Card
+                elevation={2}
                 sx={{
-                    background: theme.palette.grey[900],
-                    borderRadius: theme.shape.borderRadius,
-                    padding: theme.spacing(2),
+                    p: '4px 16px',
                 }}
             >
                 <Box display='flex' justifyContent='space-between' alignItems='center' sx={{ marginBottom: theme.spacing(2) }}>
@@ -151,7 +151,7 @@ export default function BalancePage() {
                         <Typography variant='body2' color='textSecondary'>Dic, 19 11:18 </Typography>
                     </Box>
                 </Box>
-            </Box>
+            </Card>
         </Box>
     );
 }
