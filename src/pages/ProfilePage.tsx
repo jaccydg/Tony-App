@@ -15,11 +15,13 @@ import CurrencyMenuItem from '../components/profile/CurrencyMenu.tsx';
 import { logout } from '../slices/authSlice.ts';
 import ThemeToggles from '../components/profile/ThemeModal.tsx';
 import EditProfile from '../components/profile/EditProfile.tsx';
+import { navBarHeight } from '../helpers/Layout.ts';
 
 const StyledContainer = styled(Container)(({ theme }) => ({
-    marginTop: theme.spacing(4),
+    paddingTop: theme.spacing(4),
     textAlign: 'center',
-    height: '100vh',
+    height: `${window.innerHeight - navBarHeight}px`,
+    overflow: 'auto',
 }));
 
 const StyledAvatar = styled(Avatar)({
