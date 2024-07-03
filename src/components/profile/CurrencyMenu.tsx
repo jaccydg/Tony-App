@@ -7,7 +7,7 @@ import Fade from '@mui/material/Fade';
 export default function CurrencyMenuItem() {
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const [selectedItem, setSelectedItem] = React.useState<string>(() => {
-        return localStorage.getItem('selectedCurrency') || 'EUR';
+        return localStorage.getItem('selectedCurrency') || 'EUR €';
     });
     const open = Boolean(anchorEl);
 

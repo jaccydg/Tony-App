@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, TextField, Modal, Box } from '@mui/material';
+import { Button, Modal, Box, Typography, TextField } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 
 interface EditProfileProps {
@@ -13,11 +13,12 @@ const EditProfile: React.FC<EditProfileProps> = ({ name, onSave }) => {
 
     const handleSave = () => {
         onSave(newName);
+        localStorage.setItem('userName', newName);
         setModalOpen(false);
     };
 
     const modalStyle = {
-        position: 'absolute' as 'absolute',
+        position: 'absolute',
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
@@ -26,14 +27,15 @@ const EditProfile: React.FC<EditProfileProps> = ({ name, onSave }) => {
         borderRadius: 5,
         boxShadow: 24,
         p: 4,
+        outline: 'none'
     };
 
     return (
         <div>
-            <Button variant="contained" onClick={() => setModalOpen(true)} style={{marginTop: '1em', marginBottom: '0.5em'}}>
-                Modifica Nome
-                <EditIcon style={{marginLeft: '0.25em', fontSize: '1.25rem'}} />
-            </Button>
+            <Typography variant="h6" component="h2" sx={{ display: 'flex', alignItems: 'center', gap: 1, padding: 2 }}>
+                {name}
+                <EditIcon onClick={() => setModalOpen(true)} style={{ cursor: 'pointer' }} />
+            </Typography>
             <Modal
                 open={modalOpen}
                 onClose={() => setModalOpen(false)}

@@ -61,10 +61,12 @@ export default function ThemeToggles() {
         dispatch(toggleThemeModePersist());
     };
 
+    const isDarkMode = theme.palette.mode === 'dark';
+
     return (
         <FormGroup style={{ left: "2em" }}>
             <FormControlLabel
-                control={<ThemeToggle sx={{ mr: -2 }} defaultChecked />}
+                control={<ThemeToggle sx={{ mr: -2 }} defaultChecked={isDarkMode} />}
                 label=""
                 onClick={handleClick}
             />

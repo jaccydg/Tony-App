@@ -3,6 +3,7 @@ import {
     Divider, List, ListItem, ListItemIcon,
     ListItemText, Typography, styled,
 } from '@mui/material';
+// import CopyIcon from '@mui/icons-material/FileCopy';
 import CreditCardIcon from '@mui/icons-material/CreditCard';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ThemeToggles from '../components/profile/ThemeModal';
@@ -13,6 +14,7 @@ import { logout } from '../slices/authSlice';
 import { useDispatch } from 'react-redux';
 import { red } from '@mui/material/colors';
 import EditProfile from '../components/profile/EditProfile';
+import { useState } from 'react';
 
 const StyledContainer = styled(Container)(({ theme }) => ({
     marginTop: theme.spacing(4),
@@ -20,36 +22,37 @@ const StyledContainer = styled(Container)(({ theme }) => ({
     height: '100vh',
 }));
 
-const StyledAvatar = styled(Avatar)(({ }) => ({
+const StyledAvatar = styled(Avatar)({
     width: 100,
     height: 100,
     margin: '0 auto',
-}));
-
+});
 
 export default function ProfilePage() {
     const dispatch = useDispatch();
+    const [name, setName] = useState(localStorage.getItem('userName') || 'Tony App');
 
     const handleClickLogout = () => {
         dispatch(logout() as any);
+    };
+
+    const handleSave = (newName: string) => {
+        setName(newName);
     };
 
     return (
         <StyledContainer maxWidth='sm'>
             <Box>
                 <StyledAvatar
-                    alt='T'
+                    alt={name}
                     src='/path/to/avatar.jpg'
                 />
-                <Typography variant='h5' margin='0.35em'>
-                    Tony App
-                </Typography>
+                <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                    <EditProfile name={name} onSave={handleSave} />
+                </Box>
                 <Typography variant='body1' color='textSecondary'>
                     tonytony@chopper.it
                 </Typography>
-                <EditProfile name={''} onSave={function (_newName: string): void {
-                    throw new Error('Function not implemented.');
-                } } />
             </Box>
             <Divider sx={{ my: 1.5 }} />
             <List>

@@ -24,6 +24,7 @@ export default function GatewayInfo(props: { open: boolean, setOpen: Function, g
             <Modal
                 open={open}
                 onClose={handleClose}
+                sx={{ outline: 'none' }}
             >
                 <Box
                     width='80vw'
